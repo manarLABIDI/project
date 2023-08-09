@@ -1,11 +1,9 @@
-package com.hydatis.KycmicroserviceCQRS.command.entity;
+package com.hydatis.KycmicroserviceCQRS.entity;
 
 import lombok.*;
 
 import javax.persistence.*;
-import java.net.URL;
 import java.time.LocalDateTime;
-import java.util.List;
 
 @Data
 @AllArgsConstructor

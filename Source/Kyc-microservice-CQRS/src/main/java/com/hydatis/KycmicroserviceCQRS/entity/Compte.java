@@ -1,6 +1,6 @@
-package com.hydatis.KycmicroserviceCQRS.command.entity;
-import com.hydatis.KycmicroserviceCQRS.command.entity.enummeration.EtatDeCompte;
-import com.hydatis.KycmicroserviceCQRS.command.entity.enummeration.SourceAlimentation;
+package com.hydatis.KycmicroserviceCQRS.entity;
+import com.hydatis.KycmicroserviceCQRS.entity.enummeration.EtatDeCompte;
+import com.hydatis.KycmicroserviceCQRS.entity.enummeration.SourceAlimentation;
 import lombok.*;
 
 import javax.persistence.*;

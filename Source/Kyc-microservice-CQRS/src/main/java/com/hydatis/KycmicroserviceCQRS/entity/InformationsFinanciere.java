@@ -1,4 +1,4 @@
-package com.hydatis.KycmicroserviceCQRS.command.entity;
+package com.hydatis.KycmicroserviceCQRS.entity;
 
 import lombok.*;
 
