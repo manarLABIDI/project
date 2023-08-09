@@ -26,8 +26,9 @@ public class Operation {
     private Boolean virementInterne;
     private Boolean cash;
     private Boolean virement;
-    private Boolean autreMoyen;
-    private String autreMoyenValue;
+
+    @Column(nullable = true)
+    private String autreMoyen;
     @Enumerated(EnumType.STRING)
     private TypeOperation typeOperation;
     @ManyToOne

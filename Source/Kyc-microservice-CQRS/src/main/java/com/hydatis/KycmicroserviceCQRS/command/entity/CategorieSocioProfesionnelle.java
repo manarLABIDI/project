@@ -17,7 +17,7 @@ import java.util.List;
 public class CategorieSocioProfesionnelle {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+    private Integer id;
     @Enumerated(EnumType.STRING)
     private TypeAgent typeAgent;
     private String raisonSociale;

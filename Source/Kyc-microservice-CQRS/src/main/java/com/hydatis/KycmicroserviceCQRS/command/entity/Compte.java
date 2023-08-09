@@ -20,6 +20,7 @@ public class Compte {
     private String raison;
 
     @Enumerated(EnumType.STRING)
+    @Column(nullable = true)
     private SourceAlimentation sourceAlimentation;
     private String autreSourceAlimentationValue;
     @Enumerated(EnumType.STRING)

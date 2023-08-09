@@ -24,4 +24,7 @@ public class Banque {
     private String rib;
     @ManyToMany(fetch = FetchType.LAZY,mappedBy = "banqueEnRelation")
     private List<AgentPersonnePhysique> clientPersonnePhysique;
+
+    @ManyToMany(fetch = FetchType.LAZY,mappedBy = "banques")
+    private List<AgentPersonneMorale> personneMorales;
 }
