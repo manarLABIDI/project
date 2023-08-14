@@ -1,4 +1,4 @@
-package com.hydatis.KycmicroserviceCQRS.entity;
+package com.hydatis.KycmicroserviceCQRS.command.model;
 import lombok.*;
 
 import javax.persistence.*;

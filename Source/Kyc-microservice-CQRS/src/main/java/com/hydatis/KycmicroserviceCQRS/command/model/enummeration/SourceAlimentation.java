@@ -1,4 +1,4 @@
-package com.hydatis.KycmicroserviceCQRS.entity.enummeration;
+package com.hydatis.KycmicroserviceCQRS.command.model.enummeration;
 
 public enum SourceAlimentation {
     PRODUIT_INVESTISSEMENTS,REVENUS_PROFESSIONNELS,

@@ -1,9 +1,9 @@
-package com.hydatis.KycmicroserviceCQRS.entity;
+package com.hydatis.KycmicroserviceCQRS.command.model;
 
-import com.hydatis.KycmicroserviceCQRS.entity.enummeration.TypeAgent;
 import lombok.*;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.List;
 
 @Data
@@ -14,20 +14,17 @@ import java.util.List;
 @Setter
 @Entity
 @Table
-public class CategorieSocioProfesionnelle {
+public class AgentPersonnePhysique extends Personne{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
-    @Enumerated(EnumType.STRING)
-    private TypeAgent typeAgent;
-    private String raisonSociale;
-    private String adresseProfessionelle;
-    private String telephone;
-    private String email;
-    private String typeActivite;
-    private String zoneGeo;
-    @OneToOne(mappedBy = "categorieSocioProfesionnelle")
-    private AgentPersonnePhysique agentPersonnePhysique;
+    private Long id;
+    private String nom;
+    private String prenom;
+    private LocalDateTime dateDeNaissance;
+    private String adressePerso;
+    private String addresseCourier;
+    private Boolean estPPE;
+    private String fonctionPpe;
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "compte_id")
     private Compte compte;

@@ -1,5 +1,5 @@
-package com.hydatis.KycmicroserviceCQRS.entity;
-import com.hydatis.KycmicroserviceCQRS.entity.enummeration.TypeDocument;
+package com.hydatis.KycmicroserviceCQRS.command.model;
+import com.hydatis.KycmicroserviceCQRS.command.model.enummeration.TypeDocument;
 import lombok.*;
 
 import javax.persistence.*;
