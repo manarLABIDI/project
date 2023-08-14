@@ -1,8 +1,8 @@
 package com.hydatis.KycmicroserviceCQRS.command.model;
+
 import lombok.*;
 
 import javax.persistence.*;
-
 
 @Data
 @AllArgsConstructor
@@ -11,11 +11,13 @@ import javax.persistence.*;
 @Getter
 @Setter
 @Entity
-@Table(name = "produits")
-public class Produit {
+@Table(name = "clients")
+public  class Client extends User{
+
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Integer id;
-    private String libelle;
-    private Integer codeProduit;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long id;
+
+
 }
+

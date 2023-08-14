@@ -1,6 +1,6 @@
 package com.hydatis.KycmicroserviceCQRS.command.model;
-import com.hydatis.KycmicroserviceCQRS.command.model.enummeration.EtatDeCompte;
-import com.hydatis.KycmicroserviceCQRS.command.model.enummeration.SourceAlimentation;
+import com.hydatis.KycmicroserviceCQRS.command.model.enums.EtatDeCompte;
+import com.hydatis.KycmicroserviceCQRS.command.model.enums.SourceAlimentation;
 import lombok.*;
 
 import javax.persistence.*;
@@ -12,7 +12,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @Entity
-@Table
+@Table(name = "comptes")
 public class Compte {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

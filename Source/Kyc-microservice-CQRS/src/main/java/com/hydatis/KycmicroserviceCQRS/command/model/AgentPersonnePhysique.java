@@ -13,7 +13,7 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
-@Table
+@Table(name = "AgentPersonnePhysiques")
 public class AgentPersonnePhysique extends Personne{
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)

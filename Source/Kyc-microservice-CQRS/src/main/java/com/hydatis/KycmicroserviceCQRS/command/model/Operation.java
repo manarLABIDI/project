@@ -1,6 +1,6 @@
 package com.hydatis.KycmicroserviceCQRS.command.model;
 
-import com.hydatis.KycmicroserviceCQRS.command.model.enummeration.TypeOperation;
+import com.hydatis.KycmicroserviceCQRS.command.model.enums.TypeOperation;
 import lombok.*;
 
 import javax.persistence.*;
