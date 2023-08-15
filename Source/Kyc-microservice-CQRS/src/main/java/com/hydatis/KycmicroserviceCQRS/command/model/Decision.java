@@ -5,6 +5,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -26,6 +27,8 @@ public class Decision {
 
     @Enumerated(EnumType.STRING)
     private TypeDecision decision;
+    @OneToMany(mappedBy = "decision")
+    private List<Responsable> responsables;
 
 
 

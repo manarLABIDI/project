@@ -1,7 +1,10 @@
 package com.hydatis.KycmicroserviceCQRS.command.model;
-import lombok.*;
 
-import javax.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
+
+import javax.persistence.MappedSuperclass;
 
 
 @Data

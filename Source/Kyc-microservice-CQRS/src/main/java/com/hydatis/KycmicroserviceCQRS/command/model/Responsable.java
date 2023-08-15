@@ -19,13 +19,13 @@ public class Responsable extends User {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    private String role;
     @Column(nullable = false, unique = true )
     private String signature;
 
     @OneToMany(mappedBy = "responsable", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     List<DemandeEngagement> demandeEngagements;
-
+    @ManyToOne
+    private Decision decision;
 
 }
 
