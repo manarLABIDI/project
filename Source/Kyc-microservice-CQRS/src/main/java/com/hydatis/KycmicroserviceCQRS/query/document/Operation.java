@@ -1,23 +1,16 @@
-package com.hydatis.KycmicroserviceCQRS.command.model;
+package com.hydatis.KycmicroserviceCQRS.query.document;
 
-import com.hydatis.KycmicroserviceCQRS.command.model.enums.TypeOperation;
+import com.hydatis.KycmicroserviceCQRS.command.model.enummeration.TypeOperation;
 import lombok.*;
 
-import javax.persistence.*;
-
-
-
 @Data
-@AllArgsConstructor
-@NoArgsConstructor
-@Builder
 @Getter
 @Setter
-@Entity
-@Table
+@NoArgsConstructor
+@AllArgsConstructor
+@Builder
+@ToString
 public class Operation {
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
     private Double montantMoyenHebdo;
     private Double montantMoyenMensuels;
@@ -26,11 +19,6 @@ public class Operation {
     private Boolean virementInterne;
     private Boolean cash;
     private Boolean virement;
-
-    @Column(nullable = true)
     private String autreMoyen;
-    @Enumerated(EnumType.STRING)
     private TypeOperation typeOperation;
-    @ManyToOne
-    private Compte compte;
 }

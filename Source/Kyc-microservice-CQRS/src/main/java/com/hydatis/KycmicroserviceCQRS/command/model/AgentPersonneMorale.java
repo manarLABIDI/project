@@ -17,7 +17,7 @@ import java.util.List;
 @Table(name = "AgentPersonneMorales")
 public class AgentPersonneMorale extends Personne{
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long numIdUnique;
     @Column(nullable = false)
     private String raisonSociale;
@@ -42,8 +42,7 @@ public class AgentPersonneMorale extends Personne{
     @JoinColumn(name = "compte_id")
     private Compte compte;
 
-    @OneToMany(cascade = CascadeType.ALL)
-    private List<PersonnePhysique> employees;
+
 
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "activite_id")
@@ -57,16 +56,18 @@ public class AgentPersonneMorale extends Personne{
     )
     private List<Banque> banques;
 
-    @OneToMany(mappedBy = "societe")
+    @OneToMany(mappedBy = "societe", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     List<SocietesAffilees> societesAffilees;
 
     @OneToOne
     @JoinColumn(name = "informations_id")
     private InformationsFinanciere informationsFinanciere;
 
+    @OneToMany(mappedBy = "agentPersonneMorale", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    private List<PersonnePhysique> personnePhysiqueBeneficaire;
 
-
-
+    @OneToMany(mappedBy = "societe", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    List<PersonnePhysique> personnePhysiqueActionneur;
 
 
 

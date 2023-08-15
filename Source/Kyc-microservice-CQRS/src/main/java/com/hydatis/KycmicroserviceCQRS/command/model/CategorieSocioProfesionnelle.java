@@ -16,7 +16,7 @@ import java.util.List;
 @Table
 public class CategorieSocioProfesionnelle {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     @Enumerated(EnumType.STRING)
     private TypeAgent typeAgent;

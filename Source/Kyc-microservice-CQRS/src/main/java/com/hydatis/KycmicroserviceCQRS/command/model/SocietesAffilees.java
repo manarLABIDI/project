@@ -15,13 +15,16 @@ import javax.persistence.*;
 @Table
 public class SocietesAffilees {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
     private String SecteurActivite;
     private Double pourcentageCapitalDetenu;
 
-    @ManyToOne
+
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "societe_id")
     private AgentPersonneMorale societe;
+
+
 }

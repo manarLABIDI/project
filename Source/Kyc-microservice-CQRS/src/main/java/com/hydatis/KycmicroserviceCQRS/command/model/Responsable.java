@@ -3,6 +3,7 @@ package com.hydatis.KycmicroserviceCQRS.command.model;
 import lombok.*;
 
 import javax.persistence.*;
+import java.util.List;
 
 @Data
 @AllArgsConstructor
@@ -11,7 +12,7 @@ import javax.persistence.*;
 @Getter
 @Setter
 @Entity
-@Table(name = "resonsables")
+@Table(name = "responsables")
 public class Responsable extends User {
 
     @Id
@@ -21,6 +22,9 @@ public class Responsable extends User {
     private String role;
     @Column(nullable = false, unique = true )
     private String signature;
+
+    @OneToMany(mappedBy = "responsable", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    List<DemandeEngagement> demandeEngagements;
 
 
 }

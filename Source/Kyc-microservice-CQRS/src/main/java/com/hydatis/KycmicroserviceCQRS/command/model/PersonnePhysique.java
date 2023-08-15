@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 @Table(name = "PersonnePhysiques")
 public class PersonnePhysique {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String nom;
     private String prenom;
@@ -28,13 +28,15 @@ public class PersonnePhysique {
     private String  lieuEmissionCIN;
     private Double pourcentageCapitalDetenu;
 
-   @ManyToOne
-   @JoinColumn(name = "associes_id")
-   private AgentPersonneMorale societe;
 
-    @ManyToOne(optional = true)
+
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "actionneur_id")
-    private PersonnePhysique personnePhysique;
+    private AgentPersonneMorale societe;
+
+    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @JoinColumn(name = "beneficaire_id")
+    private AgentPersonneMorale agentPersonneMorale;
 
 
 

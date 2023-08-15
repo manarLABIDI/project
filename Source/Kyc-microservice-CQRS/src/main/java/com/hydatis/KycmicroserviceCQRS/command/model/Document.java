@@ -15,7 +15,7 @@ import java.time.LocalDateTime;
 @Table
 public class Document {
     @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long idDoc;
     private LocalDateTime dateEmission;
     private LocalDateTime dateExpiration;
