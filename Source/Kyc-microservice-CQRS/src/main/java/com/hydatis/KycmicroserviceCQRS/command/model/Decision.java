@@ -26,7 +26,6 @@ public class Decision {
 
     @Enumerated(EnumType.STRING)
     private TypeDecision decision;
-
-
-
+    @ManyToOne
+    private Responsable prisePar;
 }

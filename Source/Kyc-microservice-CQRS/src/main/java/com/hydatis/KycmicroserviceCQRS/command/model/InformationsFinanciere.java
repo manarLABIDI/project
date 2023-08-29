@@ -15,17 +15,11 @@ import javax.persistence.*;
 @Entity
 @Table
 public class InformationsFinanciere {
-
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
-
     private Double capitalSociete;
     private Double chiffreAffaireTotal;
     private Double TotalPassif;
     private Double resultatNet;
-
-
-
-
 }

@@ -21,7 +21,7 @@ public class DemandeEngagement {
 
     private LocalDateTime dateDemande;
 
-    private Integer frausScore;
+    private Integer fraudScore;
 
     @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "responsable_id")

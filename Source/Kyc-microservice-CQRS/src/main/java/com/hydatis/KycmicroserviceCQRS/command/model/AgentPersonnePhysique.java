@@ -1,5 +1,6 @@
 package com.hydatis.KycmicroserviceCQRS.command.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.*;
 
 import javax.persistence.*;
@@ -13,7 +14,7 @@ import java.util.List;
 @Getter
 @Setter
 @Entity
-@Table(name = "AgentPersonnePhysiques")
+@Table(name = "agentPersonnePhysique")
 public class AgentPersonnePhysique extends Personne{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -25,20 +26,24 @@ public class AgentPersonnePhysique extends Personne{
     private String addresseCourier;
     private Boolean estPPE;
     private String fonctionPpe;
+    @JsonIgnore
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "compte_id")
     private Compte compte;
+    @JsonIgnore
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "document_id")
     private Document document;
     @OneToOne(cascade = CascadeType.ALL)
+    @JsonIgnore
     @JoinColumn(name = "categorie_socio_pro_id")
     private CategorieSocioProfesionnelle categorieSocioProfesionnelle;
     private Boolean estBeneficiareEffectifs;
-
+    @JsonIgnore
     @OneToOne(optional = true)
-    private AgentPersonnePhysique beneficiaireEffectifs;
 
+    private AgentPersonnePhysique beneficiaireEffectifs;
+    @JsonIgnore
     @OneToOne(mappedBy ="beneficiaireEffectifs",optional = true)
     private AgentPersonnePhysique titulaireDuCompte;
 

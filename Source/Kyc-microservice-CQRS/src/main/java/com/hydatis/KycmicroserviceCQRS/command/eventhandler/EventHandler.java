@@ -1,4 +1,7 @@
 package com.hydatis.KycmicroserviceCQRS.command.eventhandler;
 
-public class EventHandler {
+import com.hydatis.KycmicroserviceCQRS.events.Event;
+
+public interface EventHandler<T> {
+    public Boolean publish(Event<T> event);
 }

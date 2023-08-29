@@ -37,7 +37,6 @@ public class AgentPersonneMorale extends Personne{
     private String fax;
     @Column(nullable = false)
     private String groupe;
-
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "compte_id")
     private Compte compte;
@@ -56,7 +55,7 @@ public class AgentPersonneMorale extends Personne{
     )
     private List<Banque> banques;
 
-    @OneToMany(mappedBy = "societe", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY,mappedBy = "societe")
     List<SocietesAffilees> societesAffilees;
 
     @OneToOne
@@ -68,8 +67,9 @@ public class AgentPersonneMorale extends Personne{
 
     @OneToMany(mappedBy = "societe", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     List<PersonnePhysique> personnePhysiqueActionneur;
-
-
+    @OneToOne(cascade = CascadeType.ALL)
+    @JoinColumn(name = "historique_id")
+    private HistoriqueSociete historiqueSociete;
 
 }
 
