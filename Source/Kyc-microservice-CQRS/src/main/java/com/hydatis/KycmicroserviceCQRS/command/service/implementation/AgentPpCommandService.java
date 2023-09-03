@@ -19,10 +19,12 @@ import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 @RequiredArgsConstructor
 @Slf4j
+@Transactional
 @org.springframework.stereotype.Service
 public class AgentPpCommandService implements CommandService<AgentPersonnePhysique> {
 
@@ -47,15 +49,20 @@ public class AgentPpCommandService implements CommandService<AgentPersonnePhysiq
     }
 
     @Override
+    @Transactional
     public AgentPersonnePhysique save(AgentPersonnePhysique entity) {
+        try {
 
-        try{
             AgentPersonnePhysique agentPersonnePhysique = agentPpRepository.save(entity);
+
+
             Document document = agentPersonnePhysique.getDocument();
             Compte compte = agentPersonnePhysique.getCompte();
             CategorieSocioProfesionnelle categorieSocioProfessionnelle = agentPersonnePhysique.getCategorieSocioProfesionnelle();
 
+
             if (document != null) {
+                document.setTitulaireDuDocument(agentPersonnePhysique);
                 documentRepository.save(document);
             }
             if (compte != null) {
@@ -66,14 +73,18 @@ public class AgentPpCommandService implements CommandService<AgentPersonnePhysiq
                 categorieSocioProfessionnelle.setAgentPersonnePhysique(agentPersonnePhysique);
                 categorieSocioProfessionnelleRepository.save(categorieSocioProfessionnelle);
             }
+
+            // Publish the create event
             Event<AgentPersonnePhysique> createEvent = new CreateEvent<>(agentPersonnePhysique);
             eventHandler.publish(createEvent);
+
             return agentPersonnePhysique;
-        }catch (Exception e){
+        } catch (Exception e) {
             e.printStackTrace();
             return null;
         }
     }
+
 
     @Override
     public AgentPersonnePhysique update(AgentPersonnePhysique entity) {

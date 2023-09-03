@@ -22,6 +22,6 @@ public class Document {
     private String lieuEmission;
     @Enumerated(EnumType.STRING)
     private TypeDocument typeDocument;
-    @OneToOne(mappedBy = "document")
+    @OneToOne(mappedBy = "document", cascade = CascadeType.ALL)
     private AgentPersonnePhysique titulaireDuDocument;
 }

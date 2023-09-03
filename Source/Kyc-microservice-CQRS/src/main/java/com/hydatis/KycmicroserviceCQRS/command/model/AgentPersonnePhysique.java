@@ -19,6 +19,8 @@ public class AgentPersonnePhysique extends Personne{
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+
+
     private String nom;
     private String prenom;
     private LocalDateTime dateDeNaissance;
@@ -40,11 +42,11 @@ public class AgentPersonnePhysique extends Personne{
     private CategorieSocioProfesionnelle categorieSocioProfesionnelle;
     private Boolean estBeneficiareEffectifs;
     @JsonIgnore
-    @OneToOne(optional = true)
-
+    @OneToOne(cascade = CascadeType.ALL, optional = true)
     private AgentPersonnePhysique beneficiaireEffectifs;
+
     @JsonIgnore
-    @OneToOne(mappedBy ="beneficiaireEffectifs",optional = true)
+    @OneToOne(cascade = CascadeType.ALL, mappedBy ="beneficiaireEffectifs",optional = true)
     private AgentPersonnePhysique titulaireDuCompte;
 
     @ManyToMany
@@ -54,4 +56,7 @@ public class AgentPersonnePhysique extends Personne{
             inverseJoinColumns = @JoinColumn(name = "banque_id")
     )
     private List<Banque> banqueEnRelation;
+
+
+
 }
