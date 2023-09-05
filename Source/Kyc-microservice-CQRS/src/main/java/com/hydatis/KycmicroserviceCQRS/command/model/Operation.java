@@ -22,10 +22,11 @@ public class Operation {
     private Double montantMoyenHebdo;
     private Double montantMoyenMensuels;
     private Double montantMoyenJournaliers;
-    private Boolean virementBancairePostaux;
     private Boolean virementInterne;
+    private Boolean virementBancairePostaux;
     private Boolean cash;
     private Boolean virement;
+
 
     @Column(nullable = true)
     private String autreMoyen;

@@ -12,10 +12,14 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.annotation.ComponentScan;
 import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.web.servlet.config.annotation.CorsRegistry;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 import java.time.LocalDateTime;
 import java.util.Arrays;
-
+@Configuration
 @SpringBootApplication
 @ComponentScan(basePackages = "com.hydatis.KycmicroserviceCQRS.*")
 public class KycMicroserviceCqrsApplication {
@@ -37,7 +41,7 @@ public class KycMicroserviceCqrsApplication {
 		SpringApplication.run(KycMicroserviceCqrsApplication.class, args);
 	}
 
-	@Bean
+	/*@Bean
 	public CommandLineRunner dataInitializer() {
 		return args -> {
 			// Initialize data here
@@ -116,7 +120,18 @@ public class KycMicroserviceCqrsApplication {
 			categorieSocioProfessionnelle.setAgentPersonnePhysique(agent);
 			categorieSocioProfesionnelleRepository.save(categorieSocioProfessionnelle);
 		};
-	}
+	}*/
+	/*@Bean
+	public WebMvcConfigurer corsConfigurer() {
+		return new WebMvcConfigurerAdapter() {
+			@Override
+			public void addCorsMappings(CorsRegistry registry) {
+				registry.addMapping("/**")
+						.allowedOrigins("http://localhost:4200") // Replace with your Angular app's URL
+						.allowedMethods("GET", "POST", "PUT", "DELETE");
+			}
+		};
+	}*/
 
 
 }

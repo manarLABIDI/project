@@ -20,6 +20,7 @@ public class Banque {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
+    private String nomBanque;
     private String adresse;
     private String swift;
     private String rib;

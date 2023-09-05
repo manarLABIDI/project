@@ -19,7 +19,7 @@ public abstract class Personne {
     @Column
     private Boolean estResident;
     @Column
-    private String telephone;
+    private Long telephone;
     @Column
     private String email;
 }
