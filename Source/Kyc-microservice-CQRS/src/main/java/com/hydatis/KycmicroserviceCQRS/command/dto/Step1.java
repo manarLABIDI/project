@@ -25,7 +25,7 @@ public class Step1{
     private String DocumentType;
     private LocalDateTime DateEmission;
     private String LieuEmission;
-    private String AdresseEmail;
+    private String adresseEmail;
     private boolean PPE;
     private String Fonction;
     private boolean PPI;

@@ -27,7 +27,11 @@ public class AgentPersonnePhysique extends Personne{
     private String adressePerso;
     private String addresseCourier;
     private Boolean estPPE;
+    @Column(nullable = true)
     private String fonctionPpe;
+    private Boolean estPPI;
+    @Column(nullable = true)
+    private String pays;
     @JsonIgnore
     @OneToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "compte_id")
@@ -40,10 +44,10 @@ public class AgentPersonnePhysique extends Personne{
     @JsonIgnore
     @JoinColumn(name = "categorie_socio_pro_id")
     private CategorieSocioProfesionnelle categorieSocioProfesionnelle;
-    private Boolean estBeneficiareEffectifs;
+    private boolean estBeneficiareEffectifs;
     @JsonIgnore
     @OneToOne(cascade = CascadeType.ALL, optional = true)
-    private AgentPersonnePhysique beneficiaireEffectifs;
+    private AgentPersonnePhysique beneficiaireEffectif;
 
     @JsonIgnore
     @OneToOne(cascade = CascadeType.ALL, mappedBy ="beneficiaireEffectifs",optional = true)

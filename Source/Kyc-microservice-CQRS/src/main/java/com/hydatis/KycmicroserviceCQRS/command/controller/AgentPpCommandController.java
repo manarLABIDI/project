@@ -13,6 +13,7 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
@@ -49,8 +50,21 @@ public class AgentPpCommandController {
         agent.setDateDeNaissance(agentDTO.getStep1().getDdn());
         agent.setAdressePerso(agentDTO.getStep1().getAdressePersonnelle());
         agent.setAddresseCourier(agentDTO.getStep1().getAdresseCourrier());
-        agent.setEstPPE(agentDTO.getStep1().isPPE());
-        agent.setFonctionPpe(agentDTO.getStep1().getFonction());
+        agent.setTelephone(agentDTO.getStep1().getPhone());
+        agent.setEmail(agentDTO.getStep1().getAdresseEmail());
+        if (agentDTO.getStep1().isPPE()){
+            agent.setEstPPE(true);
+            agent.setFonctionPpe(agentDTO.getStep1().getFonction());
+        }else{
+            agent.setEstPPE(false);
+        }
+        if (agentDTO.getStep1().isPPI()){
+            agent.setEstPPI(true);
+            agent.setPays(agentDTO.getStep1().getPays());
+        }else{
+            agent.setEstPPI(false);
+        }
+
         Document document = new Document();
         document.setIdDoc(agentDTO.getStep1().getDocid());
         document.setTypeDocument(TypeDocument.valueOf(agentDTO.getStep1().getDocumentType()));
@@ -137,8 +151,37 @@ public class AgentPpCommandController {
                     .collect(Collectors.toList());
             agent.setBanqueEnRelation(banques);
         }
+        if (agentDTO.getStep2().isBeneficaire()) {
+            AgentPersonnePhysique beneficiaireEffectif = new AgentPersonnePhysique();
+            beneficiaireEffectif.setNom(agentDTO.getStep2().getLastnameBeneficaire());
+            beneficiaireEffectif.setPrenom(agentDTO.getStep2().getFirstnameBeneficaire());
+            Document documentBeneficiaire = new Document();
+            documentBeneficiaire.setIdDoc(Long.valueOf(agentDTO.getStep2().getDocIdBeneficaire()));
+            documentBeneficiaire.setTypeDocument(TypeDocument.valueOf(agentDTO.getStep2().getDocumentTypeBeneficaire()));
+            documentBeneficiaire.setDateEmission(LocalDateTime.parse(agentDTO.getStep2().getDateEmissionBeneficaire()));
+            documentBeneficiaire.setLieuEmission(agentDTO.getStep2().getLieuEmissionBeneficaire());
+            documentBeneficiaire.setDateExpiration(LocalDateTime.parse(agentDTO.getStep2().getDateExpirationBeneficaire()));
+
+            beneficiaireEffectif.setDocument(documentBeneficiaire);
+
+            beneficiaireEffectif.setDateDeNaissance(LocalDateTime.parse(agentDTO.getStep2().getDdnBeneficaire()));
+            beneficiaireEffectif.setNationalite(agentDTO.getStep2().getNationaliteBeneficaire());
+            beneficiaireEffectif.setEstResident(agentDTO.getStep2().isResidentBeneficaire());
+            beneficiaireEffectif.setResidence(agentDTO.getStep2().getPaysResidenceBeneficaire());
 
 
+            if (agentDTO.getStep2().isPPEBeneficaire()) {
+                beneficiaireEffectif.setEstPPE(true);
+                beneficiaireEffectif.setFonctionPpe(agentDTO.getStep2().getFonctionBeneficaire());
+            }else{
+                beneficiaireEffectif.setEstPPE(false);
+            }
+
+            agent.setBeneficiaireEffectif(beneficiaireEffectif);
+        }
+        CategorieSocioProfesionnelle categorieSocioProfesionnelle = new CategorieSocioProfesionnelle();
+
+        agent.setCategorieSocioProfesionnelle(categorieSocioProfesionnelle);
 
         return agent;
 

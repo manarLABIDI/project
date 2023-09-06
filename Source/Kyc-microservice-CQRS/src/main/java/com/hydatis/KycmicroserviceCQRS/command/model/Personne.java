@@ -17,7 +17,7 @@ public abstract class Personne {
     @Column
     private String residence;
     @Column
-    private Boolean estResident;
+    private boolean estResident;
     @Column
     private Long telephone;
     @Column

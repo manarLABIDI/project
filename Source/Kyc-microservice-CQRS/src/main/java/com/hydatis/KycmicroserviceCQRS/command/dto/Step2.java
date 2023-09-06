@@ -31,5 +31,21 @@ public class Step2{
     private boolean autresource;
     private String autreSourceText;
 
+    private boolean isBeneficaire;
+    private String lastnameBeneficaire;
+    private String firstnameBeneficaire;
+    private String docIdBeneficaire;
+    private String ddnBeneficaire;
+    private String documentTypeBeneficaire;
+    private String dateEmissionBeneficaire;
+    private String lieuEmissionBeneficaire;
+    private String dateExpirationBeneficaire;
+    private String nationaliteBeneficaire;
+    private boolean residentBeneficaire;
+    private String paysResidenceBeneficaire;
+    private boolean pPEBeneficaire;
+    private String fonctionBeneficaire;
+
+
 
 }
