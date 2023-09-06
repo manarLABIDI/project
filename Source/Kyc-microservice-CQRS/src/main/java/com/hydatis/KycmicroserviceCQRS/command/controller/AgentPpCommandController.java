@@ -10,12 +10,14 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
+import javax.validation.Valid;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@RequestMapping("/pp")
+@RequestMapping("/api")
+@CrossOrigin(origins = "http://localhost:4200/")
 public class AgentPpCommandController {
 
     private final AgentPpCommandService agentPpCommandService;
@@ -24,8 +26,8 @@ public class AgentPpCommandController {
     public AgentPpCommandController(AgentPpCommandService agentPpCommandService) {
         this.agentPpCommandService = agentPpCommandService;
     }
-    @PostMapping("/save")
-    public ResponseEntity<AgentPersonnePhysique> saveAgent(@RequestBody AgentPersonnePhysiqueDTO agentDTO) {
+    @PostMapping(path = "/formpp")
+    public ResponseEntity<AgentPersonnePhysique> saveAgent(@Valid @RequestBody AgentPersonnePhysiqueDTO agentDTO) {
 
         AgentPersonnePhysique agentPersonnePhysique = convertDTOToEntity(agentDTO);
 
@@ -35,6 +37,17 @@ public class AgentPpCommandController {
             return ResponseEntity.ok(savedAgent);
         } else {
             return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
+        }
+    }
+    @GetMapping(path = "/formpp")
+    public ResponseEntity<List<AgentPersonnePhysique>> findAll() {
+        // Use the AgentPpCommandService or appropriate service to retrieve all agents
+        List<AgentPersonnePhysique> agents = agentPpCommandService.findAll();
+
+        if (!agents.isEmpty()) {
+            return ResponseEntity.ok(agents);
+        } else {
+            return ResponseEntity.noContent().build();
         }
     }
 

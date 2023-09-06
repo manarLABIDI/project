@@ -18,6 +18,7 @@ import com.hydatis.KycmicroserviceCQRS.events.UpdateEvent;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.transaction.interceptor.TransactionAspectSupport;
 
 import javax.transaction.Transactional;
 import java.util.List;
@@ -49,41 +50,22 @@ public class AgentPpCommandService implements CommandService<AgentPersonnePhysiq
     }
 
     @Override
-    @Transactional
+
     public AgentPersonnePhysique save(AgentPersonnePhysique entity) {
         try {
-
             AgentPersonnePhysique agentPersonnePhysique = agentPpRepository.save(entity);
 
-
-            Document document = agentPersonnePhysique.getDocument();
-            Compte compte = agentPersonnePhysique.getCompte();
-            CategorieSocioProfesionnelle categorieSocioProfessionnelle = agentPersonnePhysique.getCategorieSocioProfesionnelle();
-
-
-            if (document != null) {
-                document.setTitulaireDuDocument(agentPersonnePhysique);
-                documentRepository.save(document);
-            }
-            if (compte != null) {
-                compte.setTitulaire(agentPersonnePhysique);
-                compteRepository.save(compte);
-            }
-            if (categorieSocioProfessionnelle != null) {
-                categorieSocioProfessionnelle.setAgentPersonnePhysique(agentPersonnePhysique);
-                categorieSocioProfessionnelleRepository.save(categorieSocioProfessionnelle);
-            }
-
-            // Publish the create event
             Event<AgentPersonnePhysique> createEvent = new CreateEvent<>(agentPersonnePhysique);
             eventHandler.publish(createEvent);
 
             return agentPersonnePhysique;
         } catch (Exception e) {
-            e.printStackTrace();
-            return null;
+            // Rollback the transaction and throw a runtime exception with a custom message.
+            TransactionAspectSupport.currentTransactionStatus().setRollbackOnly();
+            throw new RuntimeException("Failed to save the agent: " + e.getMessage(), e);
         }
     }
+
 
 
     @Override
