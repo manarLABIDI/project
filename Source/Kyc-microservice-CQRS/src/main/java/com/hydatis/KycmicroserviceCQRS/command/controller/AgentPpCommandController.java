@@ -2,10 +2,7 @@ package com.hydatis.KycmicroserviceCQRS.command.controller;
 
 import com.hydatis.KycmicroserviceCQRS.command.dto.AgentPersonnePhysiqueDTO;
 import com.hydatis.KycmicroserviceCQRS.command.model.*;
-import com.hydatis.KycmicroserviceCQRS.command.model.enums.EtatDeCompte;
-import com.hydatis.KycmicroserviceCQRS.command.model.enums.TypeOperation;
-import com.hydatis.KycmicroserviceCQRS.command.model.enums.TypeDocument;
-import com.hydatis.KycmicroserviceCQRS.command.model.enums.SourceAlimentation;
+import com.hydatis.KycmicroserviceCQRS.command.model.enums.*;
 
 import com.hydatis.KycmicroserviceCQRS.command.service.implementation.AgentPpCommandService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -180,12 +177,24 @@ public class AgentPpCommandController {
             agent.setBeneficiaireEffectif(beneficiaireEffectif);
         }
         CategorieSocioProfesionnelle categorieSocioProfesionnelle = new CategorieSocioProfesionnelle();
+        categorieSocioProfesionnelle.setTypeAgent(TypeAgent.valueOf(agentDTO.getStep1().getAgentType()));
+        categorieSocioProfesionnelle.setRaisonSociale(agentDTO.getStep1().getEmployeur());
+        categorieSocioProfesionnelle.setAdresseProfessionelle(agentDTO.getStep1().getAdressePro());
+        categorieSocioProfesionnelle.setTelephone(agentDTO.getStep1().getTelFaxPro());
+        categorieSocioProfesionnelle.setEmail(agentDTO.getStep1().getEmailPro());
+        categorieSocioProfesionnelle.setTypeActivite(agentDTO.getStep1().getTypeActivite());
+        categorieSocioProfesionnelle.setZoneGeo(agentDTO.getStep1().getZoneActivite());
 
         agent.setCategorieSocioProfesionnelle(categorieSocioProfesionnelle);
 
+
+        DemandeEngagement demandeEngagement = new DemandeEngagement();
+        demandeEngagement.setDateDemande(LocalDateTime.now());
+        demandeEngagement.setSignatureAgent(agentDTO.getStep4().getNomPrenomAgent());
+
+        agent.setDemandeEngagement(demandeEngagement);
+
         return agent;
-
-
     }
     public static EtatDeCompte mapComptePaiement(String comptePaiement){
         switch (comptePaiement) {

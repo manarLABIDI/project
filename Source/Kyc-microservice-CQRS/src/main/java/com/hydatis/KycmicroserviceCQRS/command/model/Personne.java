@@ -5,6 +5,8 @@ import lombok.Data;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 @Data
 @NoArgsConstructor
@@ -22,4 +24,7 @@ public abstract class Personne {
     private Long telephone;
     @Column
     private String email;
+
+    @OneToOne(mappedBy = "agent", cascade = CascadeType.ALL)
+    private DemandeEngagement demandeEngagement;
 }

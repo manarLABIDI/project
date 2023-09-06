@@ -31,7 +31,7 @@ public class Step1{
     private boolean PPI;
     private String pays;
     private String raison;
-    private String AgentType;
+    private String agentType;
     private String employeur;
     private String adressePro;
     private String telFaxPro;

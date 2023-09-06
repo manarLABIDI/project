@@ -5,6 +5,7 @@ import lombok.*;
 
 import javax.persistence.*;
 import java.time.LocalDateTime;
+import java.util.ArrayList;
 import java.util.List;
 
 @Data
@@ -60,6 +61,10 @@ public class AgentPersonnePhysique extends Personne{
             inverseJoinColumns = @JoinColumn(name = "banque_id")
     )
     private List<Banque> banqueEnRelation;
+
+
+
+
 
 
 

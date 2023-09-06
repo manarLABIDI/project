@@ -18,7 +18,7 @@ public class Decision {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
-
+    private Integer fraudScore;
     private LocalDateTime dateDecision;
 
     @OneToOne

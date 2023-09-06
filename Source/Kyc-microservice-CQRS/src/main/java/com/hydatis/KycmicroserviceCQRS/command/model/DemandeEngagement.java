@@ -21,10 +21,17 @@ public class DemandeEngagement {
 
     private LocalDateTime dateDemande;
 
-    private Integer fraudScore;
+    private String signatureAgent;
 
-    @ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+
+
+    @OneToOne
+    @JoinColumn(name = "agent_id")
+    private Personne agent;
+
+
+    /*@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     @JoinColumn(name = "responsable_id")
-    private Responsable responsable;
+    private Responsable responsable;*/
 
 }
