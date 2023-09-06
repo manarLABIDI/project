@@ -241,15 +241,5 @@ public class AgentPpCommandController {
         }
     }
 
-    @PostMapping("/save")
-    public ResponseEntity<AgentPersonnePhysique> saveAgent(@RequestBody AgentPersonnePhysique agentPersonnePhysique) {
 
-
-        AgentPersonnePhysique savedAgent = agentPpCommandService.save(agentPersonnePhysique);
-        if (savedAgent != null) {
-            return ResponseEntity.ok(savedAgent);
-        } else {
-            return ResponseEntity.status(HttpStatus.INTERNAL_SERVER_ERROR).build();
-        }
-    }
 }

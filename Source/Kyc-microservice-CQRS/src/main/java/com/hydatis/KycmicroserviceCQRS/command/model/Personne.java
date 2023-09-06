@@ -25,6 +25,5 @@ public abstract class Personne {
     @Column
     private String email;
 
-    @OneToOne(mappedBy = "agent", cascade = CascadeType.ALL)
-    private DemandeEngagement demandeEngagement;
+
 }

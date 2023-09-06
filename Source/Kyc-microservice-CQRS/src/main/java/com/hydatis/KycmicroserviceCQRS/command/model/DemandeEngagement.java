@@ -26,8 +26,8 @@ public class DemandeEngagement {
 
 
     @OneToOne
-    @JoinColumn(name = "agent_id")
-    private Personne agent;
+    @JoinColumn(name = "agentPP_id")
+    private AgentPersonnePhysique agentPersonnePhysique;
 
 
     /*@ManyToOne(cascade = CascadeType.ALL, fetch = FetchType.LAZY)

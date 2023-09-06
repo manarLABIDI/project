@@ -51,7 +51,7 @@ public class AgentPersonnePhysique extends Personne{
     private AgentPersonnePhysique beneficiaireEffectif;
 
     @JsonIgnore
-    @OneToOne(cascade = CascadeType.ALL, mappedBy ="beneficiaireEffectifs",optional = true)
+    @OneToOne(cascade = CascadeType.ALL, mappedBy ="beneficiaireEffectif",optional = true)
     private AgentPersonnePhysique titulaireDuCompte;
 
     @ManyToMany
@@ -62,7 +62,8 @@ public class AgentPersonnePhysique extends Personne{
     )
     private List<Banque> banqueEnRelation;
 
-
+    @OneToOne(mappedBy = "agentPersonnePhysique", cascade = CascadeType.ALL)
+    private DemandeEngagement demandeEngagement;
 
 
 
