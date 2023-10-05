@@ -11,7 +11,7 @@ import javax.validation.constraints.NotNull;
 @Builder
 @Getter
 @Setter
-
+@ToString
 public class AgentPersonnePhysiqueDTO {
 
     @NotNull

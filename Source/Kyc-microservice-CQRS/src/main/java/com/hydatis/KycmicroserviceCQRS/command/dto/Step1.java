@@ -3,7 +3,6 @@ package com.hydatis.KycmicroserviceCQRS.command.dto;
 import lombok.*;
 
 import java.time.LocalDateTime;
-import java.util.Date;
 
 @Data
 @AllArgsConstructor
@@ -12,22 +11,22 @@ import java.util.Date;
 @Getter
 @Setter
 public class Step1{
-    private String firstname;
-    private String lastname;
+    private String firstName;
+    private String lastName;
     private LocalDateTime ddn;
-    private String Nationalite;
-    private String AdressePersonnelle;
-    private String AdresseCourrier;
-    private boolean Resident;
-    private String PaysResidence;
+    private String nationalite;
+    private String adressePersonnelle;
+    private String adresseCourrier;
+    private boolean resident;
+    private String paysResidence;
     private Long phone;
     private Long docid;
-    private String DocumentType;
-    private LocalDateTime DateEmission;
-    private String LieuEmission;
+    private String documentType;
+    private LocalDateTime dateEmission;
+    private String lieuEmission;
     private String adresseEmail;
     private boolean PPE;
-    private String Fonction;
+    private String fonction;
     private boolean PPI;
     private String pays;
     private String raison;

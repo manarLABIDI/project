@@ -25,4 +25,8 @@ public class KafkaTopicConfig {
     public NewTopic createTopic(){
         return new NewTopic("topic-name",5,(short)1);
     }
+    @Bean
+    public NewTopic createTopic2(){
+        return new NewTopic("agent.personne.physique.events",5,(short)1);
+    }
 }

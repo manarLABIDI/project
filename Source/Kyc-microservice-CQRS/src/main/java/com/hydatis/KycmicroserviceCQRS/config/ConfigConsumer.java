@@ -18,8 +18,6 @@ import java.util.Map;
 public class ConfigConsumer {
     @Value("${spring.kafka.bootstrap-servers}")
     private String bootstrapServer;
-    @Value("${spring.kafka.schema-registry.url}")
-    private String schemaRegistryUrl;
     @Value("${spring.kafka.application-id}")
     private String applicationId;
     @Value("${spring.kafka.transaction.state.log.replication.factor}")
@@ -30,9 +28,8 @@ public class ConfigConsumer {
         props.put(ConsumerConfig.CLIENT_ID_CONFIG,applicationId);
         props.put(ConsumerConfig.BOOTSTRAP_SERVERS_CONFIG,bootstrapServer);
         props.put(ConsumerConfig.KEY_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
-        props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, KafkaAvroDeserializer.class.getName());
+        props.put(ConsumerConfig.VALUE_DESERIALIZER_CLASS_CONFIG, StringDeserializer.class.getName());
         props.put("transaction.state.log.replication.factor",1);
-        props.put("schema.registry.url","");
         return props;
     }
     @Bean

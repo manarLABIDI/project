@@ -24,9 +24,7 @@ public class Activite {
     @Column(nullable = false)
     private String formeJuridique;
 
-    @OneToOne(cascade = CascadeType.ALL)
-    @JoinColumn(name = "product_id")
-    private Produit product;
+
 
     @OneToMany(mappedBy = "activity", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
     private List<Produit> produits = new ArrayList<>();

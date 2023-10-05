@@ -1,5 +1,7 @@
 package com.hydatis.KycmicroserviceCQRS.command.service.implementation;
 
+import com.fasterxml.jackson.databind.ObjectMapper;
+import com.fasterxml.jackson.datatype.jsr310.JavaTimeModule;
 import   com.hydatis.KycmicroserviceCQRS.command.eventhandler.implementaion.AgentPersonnePhysiqueEventHandler;
 import com.hydatis.KycmicroserviceCQRS.command.model.AgentPersonnePhysique;
 import com.hydatis.KycmicroserviceCQRS.command.model.CategorieSocioProfesionnelle;
@@ -30,11 +32,15 @@ import java.util.Optional;
 public class AgentPpCommandService implements CommandService<AgentPersonnePhysique> {
 
     private final AgentPPRepository agentPpRepository;
-    private final DocumentRepository documentRepository;
-    private final CompteRepository compteRepository;
-    private final CategorieSocioProfesionnelleRepository categorieSocioProfessionnelleRepository;
+    private final ObjectMapper objectMapper ;
     private final AgentPersonnePhysiqueEventHandler eventHandler;
-
+    @Autowired
+    public AgentPpCommandService(AgentPPRepository agentPpRepository,AgentPersonnePhysiqueEventHandler eventHandler){
+        this.objectMapper = new ObjectMapper();
+        this.objectMapper.registerModule(new JavaTimeModule());
+        this.agentPpRepository = agentPpRepository;
+        this.eventHandler = eventHandler;
+    }
 
 
     @Override
@@ -54,7 +60,9 @@ public class AgentPpCommandService implements CommandService<AgentPersonnePhysiq
     public AgentPersonnePhysique save(AgentPersonnePhysique entity) {
         try {
             AgentPersonnePhysique agentPersonnePhysique = agentPpRepository.save(entity);
-
+            agentPersonnePhysique.getCategorieSocioProfesionnelle();
+            agentPersonnePhysique.getCompte();
+            System.out.println("in command saved AgentPp" + objectMapper.writeValueAsString(entity));
             Event<AgentPersonnePhysique> createEvent = new CreateEvent<>(agentPersonnePhysique);
             eventHandler.publish(createEvent);
 

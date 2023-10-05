@@ -2,6 +2,8 @@ package com.hydatis.KycmicroserviceCQRS.command.dto;
 
 import lombok.*;
 
+import java.time.LocalDateTime;
+
 @Data
 @AllArgsConstructor
 @NoArgsConstructor
@@ -26,20 +28,20 @@ public class Step2{
     private double montantsHebdomadairesdebit;
     private double montantsMensuelsdebit;
     private boolean virementespeces;
-    private boolean RevenusPro;
-    private boolean ProduitInvestissement;
+    private boolean revenusPro;
+    private boolean produitInvestissement;
     private boolean autresource;
     private String autreSourceText;
 
     private boolean isBeneficaire;
-    private String lastnameBeneficaire;
-    private String firstnameBeneficaire;
+    private String lastNameBeneficaire;
+    private String firstNameBeneficaire;
     private String docIdBeneficaire;
-    private String ddnBeneficaire;
+    private LocalDateTime ddnBeneficaire;
     private String documentTypeBeneficaire;
-    private String dateEmissionBeneficaire;
+    private LocalDateTime dateEmissionBeneficaire;
     private String lieuEmissionBeneficaire;
-    private String dateExpirationBeneficaire;
+    private LocalDateTime dateExpirationBeneficaire;
     private String nationaliteBeneficaire;
     private boolean residentBeneficaire;
     private String paysResidenceBeneficaire;
