@@ -22,7 +22,7 @@ import java.time.LocalDateTime;
 import java.util.Arrays;
 @Configuration
 @SpringBootApplication
-@ComponentScan(basePackages = "com.hydatis.KycmicroserviceCQRS")
+//@ComponentScan(basePackages = "com.hydatis.KycmicroserviceCQRS")
 @EnableMongoRepositories
 public class KycMicroserviceCqrsApplication {
 
