@@ -7,12 +7,18 @@
         <sourceOutputDir name="target/generated-sources/annotations" />
         <sourceTestOutputDir name="target/generated-test-sources/test-annotations" />
         <outputRelativeToContentRoot value="true" />
-        <module name="Config-server" />
         <module name="Kyc-microservice-CQRS" />
-        <module name="Cloud-gateway" />
-        <module name="Discovery-server" />
+        <module name="config-server" />
+        <module name="registry-server" />
+        <module name="gateway" />
       </profile>
     </annotationProcessing>
+    <bytecodeTargetLevel>
+      <module name="Cloud-gateway" target="17" />
+      <module name="Config-server" target="17" />
+      <module name="config_server" target="17" />
+      <module name="Discovery-server" target="17" />
+    </bytecodeTargetLevel>
   </component>
   <component name="JavacSettings">
     <option name="ADDITIONAL_OPTIONS_OVERRIDE">
@@ -20,6 +26,10 @@
       <module name="Config-server" options="-parameters" />
       <module name="Discovery-server" options="-parameters" />
       <module name="Kyc-microservice-CQRS" options="-parameters" />
+      <module name="config-server" options="-parameters" />
+      <module name="config_server" options="-parameters" />
+      <module name="gateway" options="-parameters" />
+      <module name="registry-server" options="-parameters" />
     </option>
   </component>
 </project>
