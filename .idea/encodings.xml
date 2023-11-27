@@ -10,7 +10,7 @@
     <file url="file://$PROJECT_DIR$/Source/config-server/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Source/config-server/src/main/resources" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Source/config_server/src/main/java" charset="UTF-8" />
+    <file url="file://$PROJECT_DIR$/Source/gateway/src/main/java" charset="UTF-8" />
     <file url="file://$PROJECT_DIR$/Source/registry-server/src/main/java" charset="UTF-8" />
-    <file url="file://$PROJECT_DIR$/gateway/src/main/java" charset="UTF-8" />
   </component>
 </project>
